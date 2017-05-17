@@ -1,0 +1,43 @@
+{
+  "html/classify_query.html": {
+    "resources": [
+      "js/mui.min.js",
+      "img/top.png",
+      "css/mui.min.css",
+      "fonts/mui.ttf",
+      "js/mui.picker.js",
+      "js/mui.poppicker.js",
+      "js/city.data.js",
+      "css/mui.poppicker.css",
+      "css/mui.picker.css",
+      "js/city.data-3.js",
+      "img/img1.png",
+      "img/img3.png",
+      "img/img2.png"
+    ],
+    "refer": [
+      "html/system_list.html"
+    ]
+  },
+  "html/system_list.html": {
+    "resources": [
+      "fonts/mui.ttf",
+      "js/mui.min.js",
+      "css/mui.min.css"
+    ],
+    "refer": [
+      "html/system_detail.html"
+    ]
+  },
+  "html/system_detail.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "img/pdf.png",
+      "img/png.png",
+      "img/word.png"
+    ],
+    "refer": []
+  }
+}
