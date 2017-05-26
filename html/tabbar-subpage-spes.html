@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>专项分类</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<style>
+			.lidata {
+				font-size: 16px;
+			}
+			
+			#search_div {
+				margin: 15px 10px 0px 10px;
+			}
+			
+			.img {
+				width: 35%;
+				height: 35%;
+			}
+			
+			body {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.mui-card .mui-control-content {
+				padding: 10px;
+			}
+			
+			.mui-control-content {
+				position: absolute;
+				margin-top: 60px;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div class="mui-scroll-wrapper scroll-content">
+				<div class="mui-scroll left-content" id="meetingContent">
+					<div class="mui-input-row mui-search mui-plus-visible" id="search_div">
+						<input id="search" type="search" class="mui-input-speech mui-input-clear" placeholder="请输入查询关键字">
+					</div>
+
+					<ul class="mui-table-view mui-grid-view mui-grid-9" id="ul">
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script>
+		mui.init({
+			swipeBack: true //启用右滑关闭功能
+		});
+
+		window.onload = function() {
+			getListData();
+		};
+
+		function getListData() {
+			var json = '{"spes":[{"nodeid":"0","nodetext":"专项制度","parentcode":"","parentname":"","nodetype":"1"},{"nodeid":"1","nodetext":"国家部委相关规定","parentcode":"0","parentname":"专项制度","nodetype":"2"},{"nodeid":"2","nodetext":"中交相关制度","parentcode":"0","parentname":"专项制度","nodetype":"2"},{"nodeid":"3","nodetext":"公司规章制度","parentcode":"0","parentname":"专项制度","nodetype":"2"},{"nodeid":"5","nodetext":"驻外机构制度","parentcode":"0","parentname":"专项制度","nodetype":"2"},{"nodeid":"6","nodetext":"所在国相关法律","parentcode":"0","parentname":"专项制度","nodetype":"2"}]}';
+			var data = JSON.parse(json);
+
+			var contentUL = document.getElementById("ul");
+			// 首先清空下面的所有结点
+			while(contentUL.hasChildNodes()) {
+				contentUL.removeChild(contentUL.firstChild);
+			}
+
+			// 开始添加新的节点
+			var fragment = document.createDocumentFragment();
+			for(var i = 0; i < data.spes.length; i++) {
+				var item = data.spes[i];
+				if(item.nodetype == 1)
+					continue;
+
+				var li = document.createElement('li');
+				li.id = item.nodetext;
+				li.className = 'mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3';
+				li.innerHTML = '<a href="javascript:void(0)"><img src="../img/spec.png" class="img" /><div class="mui-media-body" style="font-size: 14px;white-space:pre-wrap;height: 30px;">' + item.nodetext + '</div></a>';
+				fragment.appendChild(li);
+			}
+			contentUL.appendChild(fragment);
+		}
+
+		mui("ul").on('tap', 'li', function() {
+			mui.openWindow({
+				url: 'system_list.html',
+				id: Math.random(),
+				preload: true,
+				show: {
+					aniShow: 'pop-in'
+				},
+				extras: {
+					title: this.getAttribute("id")
+				}
+
+			});
+		});
+
+		(function($) {
+			$('.scroll-content').scroll({
+				indicators: true //是否显示滚动条
+			});
+		})(mui);
+	</script>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>组织机构</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<style>
+			.lidata {
+				font-size: 16px;
+			}
+			
+			#search_div {
+				margin: 15px 10px 0px 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div class="mui-input-row mui-search mui-plus-visible" id="search_div">
+				<input id="search" type="search" class="mui-input-speech mui-input-clear" placeholder="请输入查询关键字">
+			</div>
+
+			<ul class="mui-table-view mui-table-view-chevron" id="ul">
+				<li class="mui-table-view-cell mui-collapse">
+					<a class="mui-navigate-right" href="#">总部</a>
+					<ul class="mui-table-view mui-table-view-chevron" id="zongbu">
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right" href="#">iOS</a>
+						</li>
+					</ul>
+				</li>
+				<li class="mui-table-view-cell mui-collapse">
+					<a class="mui-navigate-right" href="#">驻外机构</a>
+					<ul class="mui-table-view mui-table-view-chevron" id="jigou">
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right" href="#">iOS</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script>
+		mui.init({
+			swipeBack: true //启用右滑关闭功能
+		});
+
+		window.onload = function() {
+			getListData();
+		};
+
+		function getListData() {
+			// 因为是示例Demo，不对JSON做过多解析
+			var json = '{"orgs":[{"ORGID":"zongbu","ORGCODE":"","ORGNAME":"总部","ORGLEVEL":"","PARENTORGID":"2561","ShortName":"总部","OrgType":"","SORTNO":1},{"ORGID":"jigou","ORGCODE":"","ORGNAME":"驻外机构","ORGLEVEL":"","PARENTORGID":"2561","ShortName":"驻外机构","OrgType":"","SORTNO":2},{"ORGID":"2561","ORGCODE":"a31d23f08ae24c6382eebd92dea8b985","ORGNAME":"中国港湾工程有限责任公司","ORGLEVEL":"1","PARENTORGID":null,"ShortName":"中国港湾","OrgType":"1","SORTNO":100000},{"ORGID":"2660","ORGCODE":"4FC6ADBE6F244F06B0830DDDBFA1413D","ORGNAME":"办公室","ORGLEVEL":"2","PARENTORGID":"zongbu","ShortName":"办公室","OrgType":"2","SORTNO":105000},{"ORGID":"2762","ORGCODE":"73CF18DE600544EA831B87649ABA7C50","ORGNAME":"党群工作部","ORGLEVEL":"2","PARENTORGID":"zongbu","ShortName":"党群工作部","OrgType":"2","SORTNO":106000},{"ORGID":"2919","ORGCODE":"F9E78841074841C5B128005F57AEFFA5","ORGNAME":"人力资源部（党委组织部）","ORGLEVEL":"2","PARENTORGID":"zongbu","ShortName":"人力资源部","OrgType":"2","SORTNO":107000},{"ORGID":"2563","ORGCODE":"1904A31C17F5414383F86D5BEB8FA1EB","ORGNAME":"企业发展部","ORGLEVEL":"2","PARENTORGID":"zongbu","ShortName":"企业发展部","OrgType":"2","SORTNO":108000},{"ORGID":"2913","ORGCODE":"F3DDE28ADCD149F8B03CB2838A007014","ORGNAME":"财务部","ORGLEVEL":"2","PARENTORGID":"zongbu","ShortName":"财务部","OrgType":"2","SORTNO":109000},{"ORGID":"2892","ORGCODE":"C0EEDD4DCD1D4673938BB35BA3466D35","ORGNAME":"安全质量管理部","ORGLEVEL":"2","PARENTORGID":"zongbu","ShortName":"安全质量管理部","OrgType":"2","SORTNO":110000},{"ORGID":"2895","ORGCODE":"CCCF1D1E8D4847C4A913C58D85489E4C","ORGNAME":"审计部","ORGLEVEL":"2","PARENTORGID":"zongbu","ShortName":"审计部","OrgType":"2","SORTNO":111000},{"ORGID":"2617","ORGCODE":"450761AFAEA4425299A926209D073AAC","ORGNAME":"信息化管理部","ORGLEVEL":"2","PARENTORGID":"zongbu","ShortName":"信息化管理部","OrgType":"2","SORTNO":112000},{"ORGID":"2595","ORGCODE":"212D080A392749EF8851927E09A836F9","ORGNAME":"科技部","ORGLEVEL":"2","PARENTORGID":"zongbu","ShortName":"科技部","OrgType":"2","SORTNO":113000},{"ORGID":"2611","ORGCODE":"3F42A8744E564065B4DB323716361418","ORGNAME":"商务法律部","ORGLEVEL":"2","PARENTORGID":"zongbu","ShortName":"商务法律部","OrgType":"2","SORTNO":114000},{"ORGID":"2768","ORGCODE":"786D39AF96AD4150A0630D03F8F115FB","ORGNAME":"市场开发部","ORGLEVEL":"2","PARENTORGID":"zongbu","ShortName":"市场开发部","OrgType":"2","SORTNO":115000},{"ORGID":"2743","ORGCODE":"5BD77E74EB334B86AB606209D5F75B1F","ORGNAME":"工程管理部","ORGLEVEL":"2","PARENTORGID":"zongbu","ShortName":"工程管理部","OrgType":"2","SORTNO":116000},{"ORGID":"2925","ORGCODE":"FA53F786ED974A1D9C30B90A954CFDFD","ORGNAME":"投资业务部","ORGLEVEL":"2","PARENTORGID":"zongbu","ShortName":"投资业务部","OrgType":"2","SORTNO":117000},{"ORGID":"2889","ORGCODE":"B7E4974E71464C7ABE5A4BA3C910B8F0","ORGNAME":"采购部","ORGLEVEL":"2","PARENTORGID":"zongbu","ShortName":"采购部","OrgType":"2","SORTNO":118000},{"ORGID":"2750","ORGCODE":"626fb64b455547878734dcfdce4c3286","ORGNAME":"投标报价部","ORGLEVEL":"2","PARENTORGID":"zongbu","ShortName":"投标报价部","OrgType":"2","SORTNO":119000},{"ORGID":"2976","ORGCODE":"d69b95fea8e744589596ae53ab34eebc","ORGNAME":"轨道业务部","ORGLEVEL":"2","PARENTORGID":"zongbu","ShortName":"轨道业务部","OrgType":"2","SORTNO":120000},{"ORGID":"2846","ORGCODE":"834420591CA149CCAA8CD671AE7474C9","ORGNAME":"机电装备分公司","ORGLEVEL":"2","PARENTORGID":"zongbu","ShortName":"机电装备分公司","OrgType":"2","SORTNO":121000},{"ORGID":"3040","ORGCODE":"f30e0974bb01475da9d990ae8a1f900f","ORGNAME":"机场设计院","ORGLEVEL":"2","PARENTORGID":"zongbu","ShortName":"机场设计院","OrgType":"2","SORTNO":123000},{"ORGID":"3165","ORGCODE":"94c07889e6e1443584dbc965f83f4a96","ORGNAME":"团委","ORGLEVEL":"2","PARENTORGID":"zongbu","ShortName":"团委","OrgType":"2","SORTNO":124000},{"ORGID":"2599","ORGCODE":"230c2f11770d48b4baa1d5abcdbe3e04","ORGNAME":"振华工程有限公司","ORGLEVEL":"2","PARENTORGID":"jigou","ShortName":"振华工程有限公司","OrgType":"1","SORTNO":201000},{"ORGID":"2981","ORGCODE":"e85d3bd5785e4c19b91ccba3d5334e8e","ORGNAME":"振华海湾工程有限公司","ORGLEVEL":"2","PARENTORGID":"jigou","ShortName":"振华海湾工程有限公司","OrgType":"1","SORTNO":202000},{"ORGID":"2953","ORGCODE":"b543eb676a1043c98803a50b4d733acf","ORGNAME":"中国港湾海外投资有限责任公司","ORGLEVEL":"2","PARENTORGID":"jigou","ShortName":"海外投资公司","OrgType":"1","SORTNO":203000},{"ORGID":"2566","ORGCODE":"1a4f54a382f64f76bcb90bebb5d619b7","ORGNAME":"中国港湾南太平洋区域管理中心","ORGLEVEL":"2","PARENTORGID":"jigou","ShortName":"南太平洋区域管理中心","OrgType":"1","SORTNO":204000},{"ORGID":"2610","ORGCODE":"341cef40ab684c18ab758bc9e79f1170","ORGNAME":"中国港湾雅加达房地产发展有限公司","ORGLEVEL":"2","PARENTORGID":"jigou","ShortName":"雅加达房地产","OrgType":"1","SORTNO":205000},{"ORGID":"2664","ORGCODE":"56F276A055564C52B5D3E6170504822A","ORGNAME":"中国港湾斯里兰卡区域公司","ORGLEVEL":"2","PARENTORGID":"jigou","ShortName":"斯里兰卡区域公司","OrgType":"1","SORTNO":206000},{"ORGID":"2755","ORGCODE":"650eeca7fcf74449875600a54d836f0a","ORGNAME":"中国港湾巴基斯坦办事处","ORGLEVEL":"2","PARENTORGID":"jigou","ShortName":"巴基斯坦办事处","OrgType":"1","SORTNO":207000},{"ORGID":"3041","ORGCODE":"facd4a545d024c468105bf2b4f975396","ORGNAME":"中国港湾科伦坡港口城有限责任公司","ORGLEVEL":"2","PARENTORGID":"jigou","ShortName":"科伦坡港口城有限公司","OrgType":"1","SORTNO":208000},{"ORGID":"2775","ORGCODE":"7954e36a65124e52a4212197862d9e98","ORGNAME":"中国港湾中东区域管理中心","ORGLEVEL":"2","PARENTORGID":"jigou","ShortName":"中东区域管理中心","OrgType":"1","SORTNO":209000},{"ORGID":"3043","ORGCODE":"fca0811dcddf4712b5d2a1cd189b305a","ORGNAME":"泛地中海工程有限公司","ORGLEVEL":"2","PARENTORGID":"jigou","ShortName":"泛地中海工程有限公司","OrgType":"1","SORTNO":210000},{"ORGID":"2621","ORGCODE":"47b3a98b83d34d0f89fddb1267136acc","ORGNAME":"中国港湾南部非洲区域公司","ORGLEVEL":"2","PARENTORGID":"jigou","ShortName":"南部非洲区域公司","OrgType":"1","SORTNO":212000},{"ORGID":"2954","ORGCODE":"d4adfda7586b4db3914720de1e238b50","ORGNAME":"中国港湾东部非洲区域管理中心","ORGLEVEL":"2","PARENTORGID":"jigou","ShortName":"东部非洲区域管理中心","OrgType":"1","SORTNO":213000},{"ORGID":"2932","ORGCODE":"b1c927f3c12a4f96ae16e6172e95071a","ORGNAME":"中国港湾西部非洲区域管理中心","ORGLEVEL":"2","PARENTORGID":"jigou","ShortName":"西部非洲区域管理中心","OrgType":"1","SORTNO":214000},{"ORGID":"2858","ORGCODE":"91834dd4140944e59a451aa4c638d4c4","ORGNAME":"中国港湾中部非洲区域管理中心","ORGLEVEL":"2","PARENTORGID":"jigou","ShortName":"中部非洲区域管理中心","OrgType":"1","SORTNO":215000},{"ORGID":"2898","ORGCODE":"DBF25332FB054D76826D260475EEB062","ORGNAME":"中国港湾阿尔及利亚有限责任公司","ORGLEVEL":"2","PARENTORGID":"jigou","ShortName":"阿尔及利亚有限公司","OrgType":"1","SORTNO":216000},{"ORGID":"2985","ORGCODE":"edf755329e1847d1ab908645309da29e","ORGNAME":"中国港湾美洲区域公司","ORGLEVEL":"2","PARENTORGID":"jigou","ShortName":"美洲区域公司","OrgType":"1","SORTNO":217000},{"ORGID":"2845","ORGCODE":"7ae913034f324e4591518230bf8e2d2f","ORGNAME":"中交资源投资有限公司","ORGLEVEL":"2","PARENTORGID":"jigou","ShortName":"中交资源投资公司","OrgType":"1","SORTNO":218000},{"ORGID":"2562","ORGCODE":"16b921d2d96848e7972f691a94b1df8e","ORGNAME":"中国港湾中亚办事处","ORGLEVEL":"2","PARENTORGID":"jigou","ShortName":"中亚办事处","OrgType":"1","SORTNO":219000},{"ORGID":"2754","ORGCODE":"64603d7f268047c28147c97392fb3a67","ORGNAME":"中国港湾中东欧办事处","ORGLEVEL":"2","PARENTORGID":"jigou","ShortName":"中东欧办事处","OrgType":"1","SORTNO":220000},{"ORGID":"2767","ORGCODE":"748a763d05e243138361d73a5a5dd694","ORGNAME":"中国港湾新加坡投资有限责任公司","ORGLEVEL":"2","PARENTORGID":"jigou","ShortName":"新加坡投资公司","OrgType":"1","SORTNO":221000},{"ORGID":"2980","ORGCODE":"d7f4c02be07443308b2d7740534b31ed","ORGNAME":"中国港湾波兰分公司","ORGLEVEL":"2","PARENTORGID":"jigou","ShortName":"波兰分公司","OrgType":"1","SORTNO":222000},{"ORGID":"2984","ORGCODE":"eb6f47649d9545b491a71c39e7a2f119","ORGNAME":"中国港湾（拉脱维亚）工程有限责任公司","ORGLEVEL":"2","PARENTORGID":"jigou","ShortName":"拉脱维亚有限公司","OrgType":"1","SORTNO":223000},{"ORGID":"2888","ORGCODE":"9a9c6020003c4e16adb5861c1dc4913b","ORGNAME":"中国港湾（俄罗斯）工程有限责任公司  ","ORGLEVEL":"2","PARENTORGID":"jigou","ShortName":"俄罗斯公司","OrgType":"1","SORTNO":224000},{"ORGID":"2931","ORGCODE":"ae5ea9e3f7fd41ee87aeb1d845fc9789","ORGNAME":"吉布提盐业投资公司","ORGLEVEL":"2","PARENTORGID":"jigou","ShortName":"吉布提公司","OrgType":"1","SORTNO":225000}]}';
+			var data = JSON.parse(json);
+
+			var zongbu = document.getElementById("zongbu");
+			// 首先清空下面的所有结点
+			while(zongbu.hasChildNodes()) {
+				zongbu.removeChild(zongbu.firstChild);
+			}
+			
+			// 开始添加新的节点－总部
+			var fragment = document.createDocumentFragment();
+			for(var i = 0; i < data.orgs.length; i++) {
+				var item = data.orgs[i];
+				if(item.PARENTORGID != 'zongbu')
+					continue;
+
+				var li = document.createElement('li');
+				li.id = item.ShortName;
+				li.className = 'mui-table-view-cell lidata';
+				li.innerHTML = '<a class="mui-navigate-right">' + item.ShortName + '</a>';
+				fragment.appendChild(li);
+			}
+			zongbu.appendChild(fragment);
+			
+			
+			
+			var jigou = document.getElementById("jigou");
+			// 首先清空下面的所有结点
+			while(jigou.hasChildNodes()) {
+				jigou.removeChild(jigou.firstChild);
+			}
+			// 开始添加新的节点－驻外机构
+			var fragment = document.createDocumentFragment();
+			for(var i = 0; i < data.orgs.length; i++) {
+				var item = data.orgs[i];
+				if(item.PARENTORGID != 'jigou')
+					continue;
+
+				var li = document.createElement('li');
+				li.id = item.ShortName;
+				li.className = 'mui-table-view-cell lidata';
+				li.innerHTML = '<a class="mui-navigate-right">' + item.ShortName + '</a>';
+				fragment.appendChild(li);
+			}
+			jigou.appendChild(fragment);
+		}
+
+		mui("#ul").on('tap', '.lidata', function() {
+			mui.openWindow({
+				url: 'system_list.html',
+				id: Math.random(),
+				preload: true,
+				show: {
+					aniShow: 'pop-in'
+				},
+				extras: {
+					title: this.getAttribute("id")
+				}
+
+			});
+		});
+	</script>
+
+</html>

@@ -39,5 +39,29 @@
       "img/word.png"
     ],
     "refer": []
+  },
+  "html/type_query.html": {
+    "resources": [
+      "html/tab-webview-subpage-orgs.html",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": [
+      "html/tab-webview-subpage-orgs.html",
+      "html/tab-webview-subpage-spes.html",
+      "html/tab-webview-subpage-buss.html"
+    ]
+  },
+  "html/tab-webview-subpage-buss.html": {
+    "refer": [
+      "html/system_list.html"
+    ],
+    "resources": []
+  },
+  "html/tab-webview-subpage-orgs.html": {
+    "refer": [
+      "html/system_list.html"
+    ]
   }
 }

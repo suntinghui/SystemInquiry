@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>业务分类</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<style>
+			.lidata {
+				font-size: 16px;
+			}
+			
+			#search_div {
+				margin: 15px 10px 0px 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div class="mui-input-row mui-search mui-plus-visible" id="search_div">
+				<input id="search" type="search" class="mui-input-speech mui-input-clear" placeholder="请输入查询关键字">
+			</div>
+
+			<ul class="mui-table-view" id="ul">
+			</ul>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script>
+		mui.init({
+			swipeBack: true //启用右滑关闭功能
+		});
+
+		window.onload = function() {
+			getListData();
+		};
+
+		function getListData() {
+			var json = '{"buss":[{"nodeid":"1","nodetext":"公司治理","parentcode":"0","parentname":"业务分类","nodetype":"2"},{"nodeid":"10","nodetext":"科技管理","parentcode":"0","parentname":"业务分类","nodetype":"2"},{"nodeid":"11","nodetext":"商务法律与风险管控","parentcode":"0","parentname":"业务分类","nodetype":"2"},{"nodeid":"12","nodetext":"市场营销","parentcode":"0","parentname":"业务分类","nodetype":"2"},{"nodeid":"13","nodetext":"工程管理","parentcode":"0","parentname":"业务分类","nodetype":"2"},{"nodeid":"14","nodetext":"HSE&Q管理","parentcode":"0","parentname":"业务分类","nodetype":"2"},{"nodeid":"15","nodetext":"投资管理","parentcode":"0","parentname":"业务分类","nodetype":"2"},{"nodeid":"16","nodetext":"采购管理","parentcode":"0","parentname":"业务分类","nodetype":"2"},{"nodeid":"2","nodetext":"行政综合管理","parentcode":"0","parentname":"业务分类","nodetype":"2"},{"nodeid":"3","nodetext":"党务与领导班子建设","parentcode":"0","parentname":"业务分类","nodetype":"2"},{"nodeid":"4","nodetext":"文化与宣传","parentcode":"0","parentname":"业务分类","nodetype":"2"},{"nodeid":"5","nodetext":"人力资源管理","parentcode":"0","parentname":"业务分类","nodetype":"2"},{"nodeid":"6","nodetext":"薪酬与绩效","parentcode":"0","parentname":"业务分类","nodetype":"2"},{"nodeid":"7","nodetext":"企业管理","parentcode":"0","parentname":"业务分类","nodetype":"2"},{"nodeid":"8","nodetext":"信息化管理","parentcode":"0","parentname":"业务分类","nodetype":"2"},{"nodeid":"9","nodetext":"财务与预算","parentcode":"0","parentname":"业务分类","nodetype":"2"},{"nodeid":"0","nodetext":"业务分类","parentcode":"","parentname":"","nodetype":"1"}]}';
+			var data = JSON.parse(json);
+
+			var contentUL = document.getElementById("ul");
+			// 首先清空下面的所有结点
+			while(contentUL.hasChildNodes()) {
+				contentUL.removeChild(contentUL.firstChild);
+			}
+
+			// 开始添加新的节点
+			var fragment = document.createDocumentFragment();
+			for(var i = 0; i < data.buss.length; i++) {
+				var item = data.buss[i];
+				if(item.nodetype == 1)
+					continue;
+
+				var li = document.createElement('li');
+				li.id = item.nodetext;
+				li.className = 'mui-table-view-cell lidata';
+				li.innerHTML = '<a class="mui-navigate-right">' + item.nodetext + '</a>';
+				fragment.appendChild(li);
+			}
+			contentUL.appendChild(fragment);
+		}
+
+		mui("#ul").on('tap', '.lidata', function() {
+			mui.openWindow({
+				url: 'system_list.html',
+				id: Math.random(),
+				preload: true,
+				show: {
+					aniShow: 'pop-in'
+				},
+				extras: {
+					title: this.getAttribute("id")
+				}
+
+			});
+		});
+	</script>
+
+</html>
